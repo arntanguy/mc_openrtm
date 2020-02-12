@@ -107,6 +107,7 @@ protected:
   TimedDoubleSeq m_qInit;
   InPort<TimedDoubleSeq> m_qInitIn;
   std::vector<double> qInit = {};
+  /* Default body sensor */
   TimedPoint3D m_pIn;
   InPort<TimedPoint3D> m_pInIn;
   TimedOrientation3D m_rpyIn;
@@ -116,15 +117,27 @@ protected:
   Eigen::Vector3d rateIn;
   TimedAcceleration3D m_accIn;
   InPort<TimedAcceleration3D> m_accInIn;
-  Eigen::Vector3d accIn;
-  TimedPose3D m_poseIn;
   InPort<TimedPose3D> m_poseInIn;
-  Eigen::Vector3d rpyIn;
-  Eigen::Vector3d pIn;
-  /* Velocity of the free flyer, given by simulator */
+  TimedPose3D m_poseIn;
   InPort<TimedDoubleSeq> m_velInIn;
   TimedDoubleSeq m_velIn;
   sva::MotionVecd velIn;
+  Eigen::Vector3d accIn;
+  Eigen::Vector3d rpyIn;
+  Eigen::Vector3d pIn;
+  /* Floating base input */
+  RTC::InPort<RTC::TimedPose3D> m_basePoseInIn;
+  RTC::InPort<RTC::TimedDoubleSeq> m_baseVelInIn;
+  RTC::InPort<RTC::TimedDoubleSeq> m_baseAccInIn;
+  RTC::TimedPose3D m_basePoseIn;
+  RTC::TimedDoubleSeq m_baseVelIn;
+  RTC::TimedDoubleSeq m_baseAccIn;
+  sva::MotionVecd basePoseIn;
+  Eigen::Vector3d basePosIn;
+  Eigen::Quaterniond baseRotIn;
+  sva::MotionVecd baseVelIn;
+  sva::MotionVecd baseAccIn;
+  /* Torque input */
   TimedDoubleSeq m_taucIn;
   InPort<TimedDoubleSeq> m_taucInIn;
   std::vector<double> taucIn;
